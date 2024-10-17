@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nandini Sathuluri - Resume</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        header, section {
+            background: #ffffff;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        header {
+            text-align: center;
+        }
+        header h1 {
+            margin-bottom: 5px;
+        }
+        .toc {
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .toc h2 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #2c3e50;
+        }
+        .toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .toc li {
+            margin: 5px 0;
+        }
+        .toc a {
+            text-decoration: none;
+            color: #2c3e50;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        .toc .toc-h2 {
+            margin-left: 20px;
+            font-size: 0.95em;
+        }
+        .section-title {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #2c3e50;
+            cursor: pointer;
+            padding: 5px;
+        }
+        .section-content {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Nandini Sathuluri</h1>
+        <div class="contact-info">
+            <p>H.NO:40, Parimila Nagar, ECIL, Kapra, Hyderabad - 500062</p>
+            <p>7416898234 ⋄ 018nandini@gmail.com ⋄ LinkedIn: Sathuluri Nandini</p>
+        </div>
+    </header>
+
+    <!-- Table of Contents -->
+    <nav class="toc">
+        <h2>Table of Contents</h2>
+        <ul id="toc-list"></ul>
+    </nav>
+
+    <section>
+        <h2 class="section-title">Skills</h2>
+        <div class="section-content">
+            <h3>Technical Skills</h3>
+            <ul>
+                <li><strong>Languages:</strong> C, Python, SQL, R, C++, Java (intermediate)</li>
+                <li><strong>Tools:</strong> MS Office, AutoCAD, Linux, Git, Power BI</li>
+                <li><strong>Web Skills:</strong> HTML, CSS, JavaScript</li>
+                <li><strong>AI/ML:</strong> Machine Learning, Generative AI (GPT, Gemini)</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">Education</h2>
+        <div class="section-content">
+            <h3>VNR Vignana Jyothi Institute of Engineering and Technology</h3>
+            <p>B.Tech in Computer Science - Data Science, CGPA: 9.2/10</p>
+            <h3>Kasturba Gandhi Junior College, Hyderabad</h3>
+            <p>Intermediate State Board, 93.6%</p>
+            <h3>Sri Aurobindo School</h3>
+            <p>Class 10, CGPA: 10/10</p>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">Projects</h2>
+        <div class="section-content">
+            <h3>Medicinal Plant Identification</h3>
+            <p>Used Convolutional Neural Networks to identify medicinal plants with high accuracy.</p>
+            <h3>Vertex Summarization Tool</h3>
+            <p>Created a tool using graph analysis on the Google Cloud Platform for text summarization.</p>
+            <h3>Age and Gender Detection App</h3>
+            <p>Built with Python Flask and CNN models, achieving 75% accuracy.</p>
+        </div>
+    </section>
+
+    <!-- More sections as needed -->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const tocList = document.getElementById("toc-list");
+            const sections = document.querySelectorAll("h2.section-title, h3");
+            let h1Counter = 0, h2Counter = 0;
+
+            sections.forEach((section, index) => {
+                const tag = section.tagName.toLowerCase();
+                const text = section.innerText;
+                const anchorID = `section-${index}`;
+                section.setAttribute("id", anchorID);
+
+                const listItem = document.createElement("li");
+
+                if (tag === "h2") {
+                    h1Counter++;
+                    h2Counter = 0;
+                    listItem.innerHTML = `<a href="#${anchorID}">${h1Counter}. ${text}</a>`;
+                } else if (tag === "h3") {
+                    h2Counter++;
+                    listItem.innerHTML = `<a href="#${anchorID}">${h1Counter}.${h2Counter} ${text}</a>`;
+                    listItem.classList.add("toc-h2");
+                }
+
+                tocList.appendChild(listItem);
+            });
+
+            document.querySelectorAll('.section-title').forEach((title) => {
+                title.addEventListener('click', () => {
+                    const content = title.nextElementSibling;
+                    content.style.display = (content.style.display === 'block') ? 'none' : 'block';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
